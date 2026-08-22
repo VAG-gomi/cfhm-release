@@ -131,3 +131,31 @@ This ledger records packaging and execution deviations for SPEC-C1 v1.1. The fir
 **Scientific impact:** None observed.
 
 **Status:** Resolved by corrected staging command.
+
+## DEVIATION-072 — Active-link scanner flagged historical deviation prose
+
+**Stage:** Post-correction remote verification.
+
+**Observed issue:** A broad grep treated the old MAF-derived path quoted inside DEVIATION-068 and DEVIATION-069 historical records as an active stale link and stopped the verification pass. The remote repository had no active broken reference at that point.
+
+**Resolution:** Rerun link verification against active README/catalog/reproduction links while allowing historical deviation records to retain their exact incident descriptions. No remote repository mutation occurred during the false-positive check.
+
+**Classification:** Verification-tooling false positive under §G1, not a scientific or model change.
+
+**Scientific impact:** None observed.
+
+**Status:** Resolved by scoped active-link verification.
+
+## DEVIATION-073 — Local provenance refresh shell had an unterminated final quote
+
+**Stage:** Final package-copy refresh before GitHub correction push.
+
+**Observed issue:** The refresh command’s final `printf` string ended with a double quote instead of a single quote, leaving the shell waiting for continuation. The local package-manifest work and provenance commit completed before the shell was terminated; the command did not push or mutate GitHub.
+
+**Resolution:** Terminate the waiting shell, inspect the local commit and staged repository manifests, and continue using a corrected command. No scientific files or remote state are affected.
+
+**Classification:** Shell-command bookkeeping failure under §G1, not a scientific or model change.
+
+**Scientific impact:** None observed.
+
+**Status:** Resolved by shell cleanup and corrected verification.
