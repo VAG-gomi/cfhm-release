@@ -12,7 +12,7 @@ The evidence is synthetic only. F1-v1 was void by design because its rate gate w
 
 ## Canonical model location
 
-The actual reusable CFHM implementation is in [`src/cfhm/model.py`](src/cfhm/model.py). The package world generator is [`src/cfhm/worlds.py`](src/cfhm/worlds.py), the package metrics are in [`src/cfhm/metrics.py`](src/cfhm/metrics.py), and the public exports are in [`src/cfhm/__init__.py`](src/cfhm/__init__.py). The actual experiment runner that produced the preserved autopsy evidence is [`research/maf-spec-m1/run_maf.py`](research/maf-spec-m1/run_maf.py).
+The actual reusable CFHM implementation is in [`src/cfhm/model.py`](src/cfhm/model.py). The package world generator is [`src/cfhm/worlds.py`](src/cfhm/worlds.py), the package metrics are in [`src/cfhm/metrics.py`](src/cfhm/metrics.py), and the public exports are in [`src/cfhm/__init__.py`](src/cfhm/__init__.py). The actual F1-v2 experiment runner is [`research/source/run_experiment.py`](research/source/run_experiment.py), and the actual SPEC-002 autopsy runner is [`research/f1_v2_autopsy/run_autopsy.py`](research/f1_v2_autopsy/run_autopsy.py).
 
 ## Installation
 
@@ -84,7 +84,17 @@ The package is intentionally not presented as a deployment-ready predictor. Its 
 - [`cfhm-spec-c1-evidence`](https://github.com/VAG-gomi/cfhm-spec-c1-evidence) — original SPEC-C1 evidence view.
 - [`cfhm-evidence-bank`](https://github.com/VAG-gomi/cfhm-evidence-bank) — complete evidence-bank view.
 
-The canonical model remains in `cfhm-release/src/cfhm/`. The original runner and raw evidence remain under `research/maf-spec-m1/`.
+## Preserved research execution
+
+The canonical repository also preserves the actual historical execution under [`research/`](research/):
+
+- [`research/source/run_experiment.py`](research/source/run_experiment.py) — actual F1-v2 experiment runner.
+- [`research/source/score_metrics.py`](research/source/score_metrics.py) — actual F1-v2 metric runner.
+- [`research/f1_v2/`](research/f1_v2/) — complete F1-v2 output tree.
+- [`research/f1_v2_autopsy/`](research/f1_v2_autopsy/) — complete SPEC-002 autopsy tree.
+- [`research/spec/`](research/spec/) — preserved authored specification chain.
+
+The package-level `ARTIFACT_MANIFEST.sha256` verifies the 30-file `cfhm` package at the repository root. The research trees retain their own original manifests and are not rewritten by the package manifest.
 
 ## Provenance boundary
 

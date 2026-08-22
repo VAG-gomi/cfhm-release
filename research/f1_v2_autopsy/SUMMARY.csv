@@ -1,0 +1,12 @@
+statistic,value
+d1_gate_pass_fraction,1.0
+d1_worst_delta,0.0
+g_A1,0.0
+g_A2,0.0
+collapse_fraction,1.0
+amp_fraction,0.0
+rho_median_A2,-0.675
+o_A1,0.19999999999999996
+o_A2,0.24
+o_b3_A1,0.0
+o_b3_A2,0.039999999999999925

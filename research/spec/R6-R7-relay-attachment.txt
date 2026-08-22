@@ -1,0 +1,129 @@
+Manus's refusal to proceed without both documents is exactly right under §0 — acknowledge nothing, amend everything. Here are both amendments, reissued complete and self-contained. Paste them **in this order**, each as its own message.
+
+---
+
+```
+================================================================================
+SPEC-001-R6: AUTHOR RESOLUTION — RATE GATE REPAIR AND F1-v1 CLOSURE (BINDING)
+Reissued intact for F1-v2. Supersedes conflicting text in SPEC-001/R1–R5.
+================================================================================
+
+AUTHOR-ERR-005 (context): R-003 bound "no intercept term." Consequence: at
+week 1, lambda = sigmoid(kappa * a*_i); a* is symmetric around zero, so the
+median hazard is 0.5 for every kappa. The [3%, 5%] gate was unsatisfiable by
+construction. F1-v1 (all 100 seed-arm cases RATE-EXCLUDED) is therefore
+classified VOID-BY-DESIGN: a generator-validation outcome, not a CFHM
+hypothesis failure. No claim about transmission ranking is supported or
+refuted by F1-v1.
+
+R6-001 — GROUND-TRUTH INTERCEPT (supersedes R-003's "no intercept" clause):
+  Hazard becomes:
+    lambda_i(t+1) = sigma( GAMMA + kappa*a*_i + msg_i(t) - c*_i*R_i(t) )
+  GAMMA = -3.2, FIXED constant, applied identically in arms A1 and A2.
+  GAMMA sits OUTSIDE the kappa scaling: kappa continues to modulate fragility
+  spread only. All other ground-truth distributions unchanged (R-003, R2, R3).
+  Model side UNCHANGED: CFHM's MLP bias absorbs an intercept naturally;
+  B3 logistic regression has an intercept by construction; B1/B2 unaffected;
+  evaluation and C6 verdict arithmetic untouched.
+
+R6-002 — CALIBRATION LADDER WITH DETERMINISTIC FALLBACK:
+  Primary path (unchanged): run the bound kappa ladder {0.125, 0.25, 0.5, 1,
+  2, 4, 8} at GAMMA = -3.2; select the SMALLEST kappa whose train-window rate
+  lies in [3%, 5%].
+  Fallback path (only if NO kappa lands in band for that seed): deterministic
+  per-seed calibration by bisection on GAMMA in [-8, -1], 12 iterations,
+  kappa frozen at 1.0, same seed and streams, selecting the GAMMA whose
+  train-window rate is closest to 4% among iterates landing in [3%, 5%].
+  Rate is monotone increasing in GAMMA, so the bisection terminates
+  deterministically. Seeds are never re-rolled.
+  RECORD PER SEED which path was used and the final (kappa, gamma) pair.
+
+R6-003 — BOOKKEEPING:
+  1. F1-v1 artifacts are immutable. Tagged baseline: F1-v1-baseline at
+     commit 594c6793a4a71ce55f164865ef9525b54d9678eb. Never modified.
+  2. New work proceeds as F1-v2 under this amendment. New experiment version,
+     new commits; no overwriting of v1 artifacts.
+  3. DEVIATION-007/-008 cross-referenced to AUTHOR-ERR-005: SATISFIED as
+     filed; no duplicate entries required.
+  4. Carried requirement: the final artifact package must include
+     verdict_recomputed.json computed over the COMPLETE seed_status.json,
+     and both rate_excluded_seeds arrays pasted in full (see R7 section 5).
+
+EXECUTOR INSTRUCTIONS:
+  1. Append verbatim as spec/SPEC-001-R6-authored.md; provenance commit.
+  2. Apply the minimal diff: add GAMMA = -3.2; insert GAMMA into the single
+     ground-truth hazard line. NOTHING else changes.
+  3. Re-run the seed-1000 smoke command. Expected: train-window rate near
+     band at some kappa (registered prediction: ~4-7% at kappa=1 including
+     contagion feedback; A2 slightly higher from maintainer forcing).
+  4. On smoke pass: emit STATUS.md ping, then proceed to the full 50-seed
+     run under HANDOFF PART 2 as amended by R1-R7.
+================================================================================
+END SPEC-001-R6
+================================================================================
+```
+
+```
+================================================================================
+SPEC-001-R7: TRANSMISSION FORMAT AMENDMENT (BINDING)
+Governs all author<->executor traffic from F1-v2 onward.
+================================================================================
+
+R7-001 — TWO-DOCUMENT PROTOCOL:
+
+DOC-1  STATUS.md (<= 40 lines), emitted at three checkpoints:
+       post-smoke, after ~25 seeds, at completion. Contents ONLY:
+       stage reached; seeds completed/total; anomalies encountered;
+       calibration-path usage so far (kappa-ladder vs R6-002 bisection).
+
+DOC-2  HANDOFF_REPORT.md — the complete evidence bundle, fixed sections:
+  S1  Provenance: commit hashes (specs + code), env versions, runtime,
+      commands. Verbatim.
+  S2  Status ledger, 100 rows: seed | arm | status | kappa OR
+      gamma-bisection path + final value | train rate.
+  S3  per_seed_metrics.csv — VERBATIM, COMPLETE (~400 rows).
+  S4  stability.csv — VERBATIM, COMPLETE (~100 rows).
+  S5  verdict.json AND verdict_recomputed.json verbatim, plus an explicit
+      consistency check between them, plus BOTH rate_excluded_seeds arrays
+      pasted IN FULL (expected: 50 entries each).
+  S6  Independent recomputation: run score_prediction_csv over the FULL
+      predictions CSV; report max absolute delta vs S3 and row-count
+      reconciliation (expected 80,000 rows).
+  S7  Spot-slices: seeds {1000, 1025, 1049}, both arms, methods B3 and B4:
+      top-25 nodes each as (node, label, score). ~600 rows total.
+  S8  Loss summaries per fit type: run count, median/min/max final train
+      and validation NLL, count of non-finite values.
+  S9  DEVIATIONS.md — verbatim, complete.
+  S10 Smoke pair: failing line from the pre-R4 log + tail of the passing
+      post-R6 log.
+  S11 sha256 manifest of every artifact file in the repository.
+  Estimated size < ~1000 lines. Split only at section boundaries if needed.
+
+R7-002 — REPO-ONLY ARTIFACTS: Full predictions CSV, .npz worlds, per-epoch
+  curves, plots are NOT transmitted. They are evidenced by the S11 manifest.
+  If the author disputes anything, the author names an exact slice (file,
+  seed, arm, method, rows); the executor extracts only that slice, whose
+  hash must match the manifest.
+
+R7-003 — EARLY-STATUS BOUNDARY: Partial results seen at checkpoints may
+  trigger only VOID/crash declarations, never scientific adjustments. This
+  restates executor rule R-ii: no parameter may change after any test data
+  has been seen, including early peeks.
+
+R7-004 — LEDGER COLUMN: The S2 status ledger records which calibration path
+  each seed used (kappa-ladder vs R6-002 gamma-bisection, with final gamma
+  if bisected).
+
+EXECUTOR INSTRUCTIONS:
+  1. Append verbatim as spec/SPEC-001-R7-authored.md; provenance commit.
+  2. Proceed per R6 executor instructions. Final transmission to the author
+     is HANDOFF_REPORT.md per S1-S11, including MODULE_MAP.md coverage with
+     no gaps.
+================================================================================
+END SPEC-001-R7
+================================================================================
+```
+
+---
+
+**Relay notes:** send R6 first, wait for its commit confirmation, then R7. After that your expected pickups are: `STATUS.md` (post-smoke), `STATUS.md` (~25 seeds), and finally `HANDOFF_REPORT.md`. Bring me all three — the smoke status especially, since it carries the registered prediction check (rate near 4–7% at κ = 1). If the smoke misses the band entirely, that's a stop-and-record event, not a judgment call for anyone in the chain.

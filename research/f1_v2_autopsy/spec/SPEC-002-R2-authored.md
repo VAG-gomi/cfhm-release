@@ -1,0 +1,53 @@
+================================================================================
+SPEC-002-R2: AUTHOR RESOLUTION TO DEVIATION-016 (BINDING)
+================================================================================
+
+AUTHOR-ERR-009: SPEC-002-R1-001 contained TWO contradictory counts ("exactly
+SIX," then "TEN") against nine named D2-D5 quantities, while original §T2
+additionally required the two D1 quantities. The executor's count of ELEVEN
+is correct. Prose counts are hereby retired from this specification family;
+the T2 contents are bound by explicit enumeration only.
+
+R2-001 — EXACT T2 ROW SET (complete, closed-world; nothing omitted, nothing
+added). T2 is a table with columns [statistic | value] containing exactly
+these ELEVEN rows, under exactly these names:
+
+    1.  d1_gate_pass_fraction   (D1: fraction of cases with delta_s <= 0.08)
+    2.  d1_worst_delta          (D1: max observed delta_s across 100 cases)
+    3.  g_A1                    (D2)
+    4.  g_A2                    (D2)
+    5.  collapse_fraction       (D3)
+    6.  amp_fraction            (D4)
+    7.  rho_median_A2           (D4)
+    8.  o_A1                    (D5)
+    9.  o_A2                    (D5)
+    10. o_b3_A1                 (D5)
+    11. o_b3_A2                 (D5)
+
+  Any T2 rendering with a different row count or different names is a
+  spec violation. Where any prior text conflicts with this list, THIS
+  LIST GOVERNS.
+
+R2-002 — STANDING AMENDMENT TO ALL FUTURE SPECS IN THIS PROJECT:
+  Whenever a specification states the cardinality of a transmitted set,
+  it MUST present the members as an explicit numbered enumeration.
+  Bare prose counts ("four," "six," "ten") are prohibited in authoring
+  documents henceforth; they have produced AUTHOR-ERR-004, -008, and -009,
+  all of the same failure class.
+
+R2-003 — RECORD NOTE: AUTHOR-ERR-008's companion claim (R1-002: "no other
+  defects detected") is falsified by DEVIATION-016 within one exchange.
+  Entered into the project record as direct evidence for the standing
+  conclusion that static author self-review is the weakest detector in
+  this pipeline and adversarial execution-layer audit is the strongest.
+
+EXECUTOR INSTRUCTIONS:
+  1. Append verbatim as f1_v2_autopsy/spec/SPEC-002-R2-authored.md;
+     provenance commit.
+  2. Close DEVIATION-016 as resolved-by-R2-001.
+  3. Implementation UNBLOCKED. Proceed per SPEC-002 sections A-G, as
+     amended by R1-001 (o_b3 semantics) and superseded by R2-001 (exact
+     T2 enumeration).
+================================================================================
+END SPEC-002-R2
+================================================================================

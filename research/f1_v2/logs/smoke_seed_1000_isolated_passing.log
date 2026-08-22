@@ -1,0 +1,35 @@
+completed seed=1000 arm=A1 rate=0.04005 lambda=0.01
+completed seed=1000 arm=A2 rate=0.04000 lambda=0.01
+{
+  "overall": "INCONCLUSIVE_STABILITY_GATE",
+  "arms": {
+    "A1": {
+      "eligible_seeds": [
+        1000
+      ],
+      "rate_excluded_seeds": [],
+      "n_eligible": 1,
+      "pass_seed_fraction": 0.0,
+      "pass_criterion_met_before_stability": false,
+      "kill_b3_seed_fraction": 1.0,
+      "kill_b3_criterion_met": true,
+      "cfhm_stability_gate_all_seeds": false,
+      "b3_stability_gate_all_seeds": false,
+      "decision_grade": false
+    },
+    "A2": {
+      "eligible_seeds": [
+        1000
+      ],
+      "rate_excluded_seeds": [],
+      "n_eligible": 1,
+      "pass_seed_fraction": 0.0,
+      "pass_criterion_met_before_stability": false,
+      "kill_b3_seed_fraction": 1.0,
+      "kill_b3_criterion_met": true,
+      "cfhm_stability_gate_all_seeds": false,
+      "b3_stability_gate_all_seeds": false,
+      "decision_grade": false
+    }
+  }
+}

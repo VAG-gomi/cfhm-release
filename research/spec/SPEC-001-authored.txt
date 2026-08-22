@@ -1,0 +1,67 @@
+Accepted. Roles registered: **I author, you relay, Manus executes.** No architecture suggestions will be incorporated — and none were needed. Here is the implementation specification for **CFHM / F1**, written to be built without a single design decision left to the executor.
+
+---
+
+# SPEC-001: CFHM F1 — Transmission Ranking vs. Fragility-Only Baselines
+
+## 0. Executor rules (binding)
+
+1. Implement exactly what is written. If anything is ambiguous, contradictory, or fails at runtime: **stop, record the error verbatim in `DEVIATIONS.md`, move on**. Do not improvise substitutes.
+2. All 50 seeds are reported. Dropping seeds, re-rolling, or tuning after seeing test results voids the entire run.
+3. Hyperparameters marked `[GRID]` are selected on validation likelihood only — never on test data.
+
+## 1. Scope
+
+F1 only. F2–F4 specs follow after the F1 verdict — staged, so a dead core doesn't waste budget on downstream tests.
+
+## 2. World generator (ground truth)
+
+Per seed s ∈ {1000…1049}: N = 200 nodes, weekly bins, T_train = 104 weeks, T_test = 26 weeks.
+
+**Graph:** random DAG (topological order i<j permits edge i→j), 3 edge types τ ∈ {major, minor, advisory}; P(edge) = {0.04, 0.08, 0.05}.
+
+**Features xᵢ:** log-age, aggregate in-degree, lognormal popularity, uniform complexity, 5-dim field one-hot (d = 10 total).
+
+**Dynamics:** λᵢ(t+1) = σ(a*ᵢ + Σ_{j∈parents(i)} Σₘ b*_{τ,m}·ψ_m(s) − c*ᵢRᵢ(t)); events sampled Bernoulli per node-week, capped at 1. Accumulators: E_{j,m}(t) = ρ_m·E_{j,m}(t−1) + n_j(t−1); Rᵢ(t) = 0.7Rᵢ(t−1) + nᵢ(t−1). Fragility a*ᵢ = w*ᵀx̃ᵢ + 𝒩(0, 0.3).
+
+**Two arms, both generated, both reported:**
+
+| Arm | Kernel | Latent common causes | Graph handed to model |
+|---|---|---|---|
+| **A1 matched** | 3-tap geometric, ρ = {0.5, 0.8, 0.95} | none | full |
+| **A2 adversarial** | power-law ψ(s) ∝ (1+s)^−1.5 | 5 hidden "maintainer" nodes; on fire, force p = 0.5 event on all children that week, **no edge recorded** | **85% of true edges** |
+
+**Pass/fail is judged on A2 only.** A1 is diagnostic. This enforces the generator-separation rule from SPEC-history: the model's baked-in assumptions (DAG conduits, tap kernel, complete graph) are *violated* in A2 by construction.
+
+Target event rate: tune w* scale so ~4% of node-weeks have events. If out of [2%, 8%], regenerate seed.
+
+## 3. Model (CFHM as authored, one declared refinement)
+
+Exactly the §4 recursion from the design, with one simplification I'm making as author: **kernel decays ρ are fixed** at {0.5, 0.8, 0.95}; only amplitudes b_{τ,m} are learned. Rationale: jointly identifying decay and amplitude from rare events is ill-conditioned; identifiability beats flexibility at this data scale. This supersedes "θ ≈ 6 learned."
+
+- aᵢ = MLP(xᵢ): 10 → 16 (tanh) → 1, ≈ 350 params
+- b_{τ,m} ≥ 0 via softplus, **zero-initialized**, per-type normalized so Σₘ b_{τ,m} ≤ 0.95
+- cᵢ ≥ 0 via softplus, zero-init
+- Loss: Bernoulli NLL + λ₁Σ|b| `[GRID: 1e-4, 1e-3, 1e-2]` + 1e-4‖W‖²
+- Adam, lr 1e-3, 50 epochs, full-batch; features standardized on train-window stats only; hazards clipped to [1e-6, 1−1e-6]
+
+## 4. Baselines (same train window, same task)
+
+B1 in-degree centrality · B2 age×popularity · B3 fragility-only (logistic regression on xᵢ — the Cox stand-in) · B4 = CFHM.
+
+## 5. Task & metrics
+
+Rank all 200 nodes by predicted hazard mass over the test quarter; label = ≥1 event in quarter. Metrics: **Precision@25 (primary)**, Precision@10, AUROC (secondary). One shared scoring script for all methods. Stability gate: Kendall τ between rankings from bootstrap refits ≥ 0.5, else results marked not decision-grade regardless of scores.
+
+## 6. Pre-registered verdict rule
+
+**PASS:** CFHM beats the best baseline by ≥20% relative on Precision@25 in ≥80% of A2 seeds.
+**KILL:** B3 alone matches CFHM (contagion channel adds nothing) — or any §0 violation occurred.
+
+## 7. Required return artifacts (for my audit)
+
+Repo with commit hash · config JSON per run · full loss curves · **per-seed CSV: predictions and labels for every method** · environment file · complete `DEVIATIONS.md`. Summaries are not evidence; raw tables are.
+
+---
+
+**Handoff:** paste SPEC-001 to Manus as-is. When artifacts come back, I audit against §6 in writing — pass, kill, or inconclusive-with-reasons. If PASS, I write SPEC-002 (F2 counterfactual removal) same day. If KILL, the post-mortem names which component died, per F4 logic, before anything is redesigned.

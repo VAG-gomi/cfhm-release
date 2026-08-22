@@ -1,0 +1,40 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/cfhm_f1/run_experiment.py", line 820, in <module>
+    main()
+  File "/home/ubuntu/cfhm_f1/run_experiment.py", line 713, in main
+    metrics = metric_triplet(data.labels, scores)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/cfhm_f1/score_metrics.py", line 36, in metric_triplet
+    auroc = float(roc_auc_score(labels, scores))
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/utils/_param_validation.py", line 218, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_ranking.py", line 733, in roc_auc_score
+    return _average_binary_score(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_base.py", line 77, in _average_binary_score
+    return binary_metric(y_true, y_score, sample_weight=sample_weight)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_ranking.py", line 478, in _binary_roc_auc_score
+    fpr, tpr, _ = roc_curve(y_true, y_score, sample_weight=sample_weight)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/utils/_param_validation.py", line 191, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_ranking.py", line 1319, in roc_curve
+    _, fps, _, tps, thresholds = confusion_matrix_at_thresholds(
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/utils/validation.py", line 80, in inner_f
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/utils/_param_validation.py", line 191, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_ranking.py", line 1021, in confusion_matrix_at_thresholds
+    _sort_inputs_and_compute_classification_thresholds(
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_ranking.py", line 892, in _sort_inputs_and_compute_classification_thresholds
+    check_consistent_length(y_true, y_score, sample_weight)
+  File "/usr/local/lib/python3.12/dist-packages/sklearn/utils/validation.py", line 458, in check_consistent_length
+    raise ValueError(
+ValueError: Found input variables with inconsistent numbers of samples: [200, 1]

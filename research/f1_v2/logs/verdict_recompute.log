@@ -1,0 +1,1140 @@
+{
+  "arms": {
+    "A1": {
+      "b3_stability_gate_all_seeds": false,
+      "cfhm_stability_gate_all_seeds": false,
+      "decision_grade": false,
+      "eligible_seeds": [
+        1000,
+        1001,
+        1002,
+        1003,
+        1004,
+        1005,
+        1006,
+        1007,
+        1008,
+        1009,
+        1010,
+        1011,
+        1012,
+        1013,
+        1014,
+        1015,
+        1016,
+        1017,
+        1018,
+        1019,
+        1020,
+        1021,
+        1022,
+        1023,
+        1024,
+        1025,
+        1026,
+        1027,
+        1028,
+        1029,
+        1030,
+        1031,
+        1032,
+        1033,
+        1034,
+        1035,
+        1036,
+        1037,
+        1038,
+        1039,
+        1040,
+        1041,
+        1042,
+        1043,
+        1044,
+        1045,
+        1046,
+        1047,
+        1048,
+        1049
+      ],
+      "kill_b3_criterion_met": true,
+      "kill_b3_seed_fraction": 0.96,
+      "n_eligible": 50,
+      "pass_criterion_met_before_stability": false,
+      "pass_seed_fraction": 0.0,
+      "per_seed_kill_b3": [
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.21739130434782614,
+          "seed": 1000
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.125,
+          "seed": 1001
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.4166666666666666,
+          "seed": 1002
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.18181818181818185,
+          "seed": 1003
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.64,
+          "seed": 1004
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": 0.0,
+          "seed": 1005
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.12,
+          "seed": 1006
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": 0.0,
+          "seed": 1007
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": 0.0454545454545455,
+          "seed": 1008
+        },
+        {
+          "kill_b3_seed": false,
+          "relative_improvement_vs_b3": 0.15,
+          "seed": 1009
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.13043478260869565,
+          "seed": 1010
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.12,
+          "seed": 1011
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.2272727272727272,
+          "seed": 1012
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.2916666666666666,
+          "seed": 1013
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.48,
+          "seed": 1014
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.4,
+          "seed": 1015
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.04166666666666659,
+          "seed": 1016
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.2727272727272727,
+          "seed": 1017
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.31999999999999995,
+          "seed": 1018
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.42857142857142855,
+          "seed": 1019
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.4545454545454546,
+          "seed": 1020
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.3636363636363636,
+          "seed": 1021
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.13636363636363635,
+          "seed": 1022
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.1666666666666666,
+          "seed": 1023
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.2608695652173913,
+          "seed": 1024
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.13043478260869565,
+          "seed": 1025
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.4583333333333333,
+          "seed": 1026
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.04166666666666659,
+          "seed": 1027
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": 0.0,
+          "seed": 1028
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.52,
+          "seed": 1029
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.19999999999999996,
+          "seed": 1030
+        },
+        {
+          "kill_b3_seed": false,
+          "relative_improvement_vs_b3": 0.09523809523809533,
+          "seed": 1031
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.04347826086956525,
+          "seed": 1032
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.0869565217391305,
+          "seed": 1033
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": 0.04347826086956513,
+          "seed": 1034
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.4,
+          "seed": 1035
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.125,
+          "seed": 1036
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.28,
+          "seed": 1037
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": 0.0,
+          "seed": 1038
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.25,
+          "seed": 1039
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.07999999999999996,
+          "seed": 1040
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.2608695652173913,
+          "seed": 1041
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.7083333333333333,
+          "seed": 1042
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.31999999999999995,
+          "seed": 1043
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.4583333333333333,
+          "seed": 1044
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.2727272727272727,
+          "seed": 1045
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.5416666666666667,
+          "seed": 1046
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.24,
+          "seed": 1047
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.12,
+          "seed": 1048
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.040000000000000036,
+          "seed": 1049
+        }
+      ],
+      "per_seed_pass": [
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.21739130434782614,
+          "seed": 1000
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.125,
+          "seed": 1001
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.4166666666666666,
+          "seed": 1002
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.18181818181818185,
+          "seed": 1003
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.64,
+          "seed": 1004
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": 0.0,
+          "seed": 1005
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.12,
+          "seed": 1006
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": 0.0,
+          "seed": 1007
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": 0.0454545454545455,
+          "seed": 1008
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": 0.15,
+          "seed": 1009
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.13043478260869565,
+          "seed": 1010
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.12,
+          "seed": 1011
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.2272727272727272,
+          "seed": 1012
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.2916666666666666,
+          "seed": 1013
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.48,
+          "seed": 1014
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.4,
+          "seed": 1015
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.04166666666666659,
+          "seed": 1016
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.2727272727272727,
+          "seed": 1017
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.31999999999999995,
+          "seed": 1018
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.42857142857142855,
+          "seed": 1019
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.4545454545454546,
+          "seed": 1020
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.3636363636363636,
+          "seed": 1021
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.13636363636363635,
+          "seed": 1022
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.1666666666666666,
+          "seed": 1023
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.2608695652173913,
+          "seed": 1024
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.13043478260869565,
+          "seed": 1025
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.4583333333333333,
+          "seed": 1026
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.04166666666666659,
+          "seed": 1027
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": 0.0,
+          "seed": 1028
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.52,
+          "seed": 1029
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.19999999999999996,
+          "seed": 1030
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": 0.09523809523809533,
+          "seed": 1031
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.04347826086956525,
+          "seed": 1032
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.0869565217391305,
+          "seed": 1033
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": 0.04347826086956513,
+          "seed": 1034
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.4,
+          "seed": 1035
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.125,
+          "seed": 1036
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.28,
+          "seed": 1037
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": 0.0,
+          "seed": 1038
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.25,
+          "seed": 1039
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.07999999999999996,
+          "seed": 1040
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.2608695652173913,
+          "seed": 1041
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.7083333333333333,
+          "seed": 1042
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.31999999999999995,
+          "seed": 1043
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.4583333333333333,
+          "seed": 1044
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.2727272727272727,
+          "seed": 1045
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.5416666666666667,
+          "seed": 1046
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.24,
+          "seed": 1047
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.12,
+          "seed": 1048
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.040000000000000036,
+          "seed": 1049
+        }
+      ],
+      "rate_excluded_seeds": []
+    },
+    "A2": {
+      "b3_stability_gate_all_seeds": false,
+      "cfhm_stability_gate_all_seeds": false,
+      "decision_grade": false,
+      "eligible_seeds": [
+        1000,
+        1001,
+        1002,
+        1003,
+        1004,
+        1005,
+        1006,
+        1007,
+        1008,
+        1009,
+        1010,
+        1011,
+        1012,
+        1013,
+        1014,
+        1015,
+        1016,
+        1017,
+        1018,
+        1019,
+        1020,
+        1021,
+        1022,
+        1023,
+        1024,
+        1025,
+        1026,
+        1027,
+        1028,
+        1029,
+        1030,
+        1031,
+        1032,
+        1033,
+        1034,
+        1035,
+        1036,
+        1037,
+        1038,
+        1039,
+        1040,
+        1041,
+        1042,
+        1043,
+        1044,
+        1045,
+        1046,
+        1047,
+        1048,
+        1049
+      ],
+      "kill_b3_criterion_met": true,
+      "kill_b3_seed_fraction": 0.98,
+      "n_eligible": 50,
+      "pass_criterion_met_before_stability": false,
+      "pass_seed_fraction": 0.0,
+      "per_seed_kill_b3": [
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.2916666666666666,
+          "seed": 1000
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.21739130434782614,
+          "seed": 1001
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.43478260869565216,
+          "seed": 1002
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.058823529411764754,
+          "seed": 1003
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.45,
+          "seed": 1004
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.15789473684210525,
+          "seed": 1005
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.13043478260869565,
+          "seed": 1006
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.14285714285714285,
+          "seed": 1007
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.0869565217391305,
+          "seed": 1008
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.0454545454545455,
+          "seed": 1009
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.5,
+          "seed": 1010
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.12,
+          "seed": 1011
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.23809523809523805,
+          "seed": 1012
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.14285714285714285,
+          "seed": 1013
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.5217391304347826,
+          "seed": 1014
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.4583333333333333,
+          "seed": 1015
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.21739130434782614,
+          "seed": 1016
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.2608695652173913,
+          "seed": 1017
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.1052631578947368,
+          "seed": 1018
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.25000000000000006,
+          "seed": 1019
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.7916666666666667,
+          "seed": 1020
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.2727272727272727,
+          "seed": 1021
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.04347826086956525,
+          "seed": 1022
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.25,
+          "seed": 1023
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.3478260869565218,
+          "seed": 1024
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.3636363636363636,
+          "seed": 1025
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.10000000000000009,
+          "seed": 1026
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.3636363636363636,
+          "seed": 1027
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": 0.0,
+          "seed": 1028
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.5,
+          "seed": 1029
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.31818181818181823,
+          "seed": 1030
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.0869565217391305,
+          "seed": 1031
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.09090909090909087,
+          "seed": 1032
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.0833333333333333,
+          "seed": 1033
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.2916666666666666,
+          "seed": 1034
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.13636363636363635,
+          "seed": 1035
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.3913043478260869,
+          "seed": 1036
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.4,
+          "seed": 1037
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.19999999999999996,
+          "seed": 1038
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.33333333333333326,
+          "seed": 1039
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.13636363636363635,
+          "seed": 1040
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.2857142857142857,
+          "seed": 1041
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.5652173913043478,
+          "seed": 1042
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.1739130434782609,
+          "seed": 1043
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.4545454545454546,
+          "seed": 1044
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.23809523809523805,
+          "seed": 1045
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.4166666666666666,
+          "seed": 1046
+        },
+        {
+          "kill_b3_seed": false,
+          "relative_improvement_vs_b3": 0.11111111111111122,
+          "seed": 1047
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.04761904761904753,
+          "seed": 1048
+        },
+        {
+          "kill_b3_seed": true,
+          "relative_improvement_vs_b3": -0.09090909090909087,
+          "seed": 1049
+        }
+      ],
+      "per_seed_pass": [
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.2916666666666666,
+          "seed": 1000
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.21739130434782614,
+          "seed": 1001
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.43478260869565216,
+          "seed": 1002
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.058823529411764754,
+          "seed": 1003
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.45,
+          "seed": 1004
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.15789473684210525,
+          "seed": 1005
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.13043478260869565,
+          "seed": 1006
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.14285714285714285,
+          "seed": 1007
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.0869565217391305,
+          "seed": 1008
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.0454545454545455,
+          "seed": 1009
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.5,
+          "seed": 1010
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.12,
+          "seed": 1011
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.23809523809523805,
+          "seed": 1012
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.14285714285714285,
+          "seed": 1013
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.5217391304347826,
+          "seed": 1014
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.4583333333333333,
+          "seed": 1015
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.21739130434782614,
+          "seed": 1016
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.2608695652173913,
+          "seed": 1017
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.1052631578947368,
+          "seed": 1018
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.25000000000000006,
+          "seed": 1019
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.7916666666666667,
+          "seed": 1020
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.2727272727272727,
+          "seed": 1021
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.04347826086956525,
+          "seed": 1022
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.28,
+          "seed": 1023
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.3478260869565218,
+          "seed": 1024
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.3636363636363636,
+          "seed": 1025
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.10000000000000009,
+          "seed": 1026
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.3636363636363636,
+          "seed": 1027
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": 0.0,
+          "seed": 1028
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.5,
+          "seed": 1029
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.31818181818181823,
+          "seed": 1030
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.0869565217391305,
+          "seed": 1031
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.09090909090909087,
+          "seed": 1032
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.0833333333333333,
+          "seed": 1033
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.2916666666666666,
+          "seed": 1034
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.13636363636363635,
+          "seed": 1035
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.3913043478260869,
+          "seed": 1036
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.4,
+          "seed": 1037
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.19999999999999996,
+          "seed": 1038
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.33333333333333326,
+          "seed": 1039
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.13636363636363635,
+          "seed": 1040
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.2857142857142857,
+          "seed": 1041
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.5652173913043478,
+          "seed": 1042
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.1739130434782609,
+          "seed": 1043
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.4545454545454546,
+          "seed": 1044
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.23809523809523805,
+          "seed": 1045
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.4166666666666666,
+          "seed": 1046
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": 0.11111111111111122,
+          "seed": 1047
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.04761904761904753,
+          "seed": 1048
+        },
+        {
+          "pass_seed": false,
+          "relative_improvement": -0.09090909090909087,
+          "seed": 1049
+        }
+      ],
+      "rate_excluded_seeds": []
+    }
+  },
+  "overall": "INCONCLUSIVE_STABILITY_GATE",
+  "spec": "SPEC-001"
+}

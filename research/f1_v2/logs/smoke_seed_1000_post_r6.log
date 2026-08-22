@@ -1,0 +1,33 @@
+{
+  "overall": "INCONCLUSIVE_RATE_EXCLUSIONS",
+  "arms": {
+    "A1": {
+      "eligible_seeds": [],
+      "rate_excluded_seeds": [
+        1000
+      ],
+      "n_eligible": 0,
+      "pass_seed_fraction": NaN,
+      "pass_criterion_met_before_stability": false,
+      "kill_b3_seed_fraction": NaN,
+      "kill_b3_criterion_met": false,
+      "cfhm_stability_gate_all_seeds": false,
+      "b3_stability_gate_all_seeds": false,
+      "decision_grade": false
+    },
+    "A2": {
+      "eligible_seeds": [],
+      "rate_excluded_seeds": [
+        1000
+      ],
+      "n_eligible": 0,
+      "pass_seed_fraction": NaN,
+      "pass_criterion_met_before_stability": false,
+      "kill_b3_seed_fraction": NaN,
+      "kill_b3_criterion_met": false,
+      "cfhm_stability_gate_all_seeds": false,
+      "b3_stability_gate_all_seeds": false,
+      "decision_grade": false
+    }
+  }
+}

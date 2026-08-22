@@ -1,0 +1,4 @@
+fit_type,run_count,median_final_train_nll,min_final_train_nll,max_final_train_nll,median_final_validation_nll,min_final_validation_nll,max_final_validation_nll,nonfinite_values
+full_refit,100,0.6211785238312393,0.4925808794692562,0.7858619298666918,,,,100
+full_refit_all_epochs,5000,0.6825655159842255,0.4925808794692562,0.9229562507132326,,,,5000
+lambda_grid_selection_final_validation,300,,,,0.6232108976745434,0.4941242671580606,0.7899730722552941,0

@@ -61,3 +61,73 @@ This ledger records packaging and execution deviations for SPEC-C1 v1.1. The fir
 **Scientific impact:** None observed. The prior four-test run and D4 collapse output remained unchanged; this failed command did not execute the acceptance tests.
 
 **Status:** Resolved by corrected external-root acceptance command and clean-manifest rerun.
+
+## DEVIATION-067 — Readable T1 rendering was absent after evidence-stage rebuild
+
+**Stage:** Four-repository staging, before GitHub repository creation.
+
+**Observed issue:** The rebuilt evidence staging tree contained the authoritative raw `AUTOPSY_ROWS.csv` but not the separately generated `AUTOPSY_ROWS_READABLE.md`. A copy guard stopped before any repository creation or remote mutation.
+
+**Resolution:** Regenerate the complete 400-row Markdown rendering directly from the actual raw CSV, verify the row count, and copy it to both evidence views. The raw CSV remains authoritative and unchanged.
+
+**Classification:** Staging/documentation bookkeeping failure under §G1, not a scientific or model change.
+
+**Scientific impact:** None observed. No raw evidence or package source was changed.
+
+**Status:** Resolved by deterministic rendering from the preserved CSV.
+
+## DEVIATION-068 — Initial four-repository README advertised a nonexistent runner path
+
+**Stage:** Post-creation live repository audit.
+
+**Observed issue:** The initial canonical README advertised `research/maf-spec-m1/run_maf.py`, which was a copied MAF-pattern path and did not exist in the CFHM repository. The actual preserved CFHM F1-v2 runner is the outer-workspace file `run_experiment.py`; the actual SPEC-002 runner is `f1_v2_autopsy/run_autopsy.py`.
+
+**Resolution:** Add the actual preserved F1-v2 runner and metric runner under `research/f1_v2/` in the canonical repository and under `evidence/source/` in both evidence views. Correct all README/catalog/reproduction links to those paths. No model behavior, raw evidence, or authored specification is changed.
+
+**Classification:** Documentation/path bookkeeping failure under §G1, not a scientific or model change.
+
+**Scientific impact:** None observed. The files added are preserved source copies, and representative hashes are checked against the outer workspace.
+
+**Status:** Resolved by path correction and source-file preservation.
+
+## DEVIATION-069 — Staged mirrors retained stale MAF-derived documentation paths
+
+**Stage:** Four-repository link audit after initial CFHM repository creation.
+
+**Observed issue:** The copied CFHM package README still contained the earlier MAF-derived `research/maf-spec-m1/run_maf.py` reference, and the staged evidence catalog retained an obsolete relative runner link. The advertised paths did not exist in the newly created CFHM repositories.
+
+**Resolution:** Correct the canonical package README, the evidence catalog, and all staged mirror copies to point to the actual CFHM F1-v2 runner at `research/source/run_experiment.py` and the actual SPEC-002 runner at `f1_v2_autopsy/run_autopsy.py`. Preserve the raw source files byte-for-byte and regenerate affected manifests. No model behavior or scientific result is changed.
+
+**Classification:** Documentation/path bookkeeping failure under §G1, not a scientific or model change.
+
+**Scientific impact:** None observed. The correction only makes existing actual source files discoverable.
+
+**Status:** Resolved by path correction and link audit.
+
+## DEVIATION-070 — Canonical staging initially replaced the package manifest scope
+
+**Stage:** Four-repository staging, before GitHub correction push.
+
+**Observed issue:** The first canonical staging pass regenerated `ARTIFACT_MANIFEST.sha256` across the entire canonical repository, which would have replaced the SPEC-C1 package manifest’s intended 30-file package scope.
+
+**Resolution:** Restore `ARTIFACT_MANIFEST.sha256` byte-for-byte from the accepted local package and use a separate `REPOSITORY_MANIFEST.sha256` for the broader canonical repository tree. The package manifest and repository manifest now have distinct scopes.
+
+**Classification:** Provenance/manifest-scope bookkeeping failure under §G1, not a scientific or model change.
+
+**Scientific impact:** None observed. No source, data, specification, or model behavior changed.
+
+**Status:** Resolved before the correction push.
+
+## DEVIATION-071 — Correction staging attempted a self-copy
+
+**Stage:** Four-repository correction staging.
+
+**Observed issue:** A refresh loop attempted to copy `cfhm-spec-c1-evidence/ARTIFACT_CATALOG.md` onto the same path, causing `cp` to stop. The command made no GitHub mutation.
+
+**Resolution:** Remove the redundant self-copy case and rerun the staging refresh. The source, raw evidence, and repository contents are unaffected.
+
+**Classification:** Local staging command bookkeeping failure under §G1, not a scientific or model change.
+
+**Scientific impact:** None observed.
+
+**Status:** Resolved by corrected staging command.

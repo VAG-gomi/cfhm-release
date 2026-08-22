@@ -1,0 +1,55 @@
+{
+  "arm": "A1",
+  "bootstrap_replicates": 10,
+  "calibration_path": "gamma-bisection",
+  "command": "/usr/bin/python3 run_experiment.py --root /home/ubuntu/cfhm_f1/f1_v2 --seeds 1000:1000",
+  "epochs": 50,
+  "gamma_fallback_bounds": [
+    -8.0,
+    -1.0
+  ],
+  "gamma_fallback_iterations": 12,
+  "gamma_fixed": -3.2,
+  "kappa_candidates": [
+    0.125,
+    0.25,
+    0.5,
+    1.0,
+    2.0,
+    4.0,
+    8.0
+  ],
+  "lambda_grid": [
+    0.0001,
+    0.001,
+    0.01
+  ],
+  "learning_rate": 0.001,
+  "n": 200,
+  "seed": 1000,
+  "seed_keys": {
+    "bootstrap": 3232733299,
+    "dynamics": 3633331186,
+    "maintainer": 2822786858,
+    "model_init": 2067319448,
+    "thinning": 3739256933,
+    "world": 1484808508
+  },
+  "selected_gamma": -4.02490234375,
+  "selected_kappa": 1.0,
+  "spec": "SPEC-001 + SPEC-001-R1 + SPEC-001-R2 + SPEC-001-R3 + SPEC-001-R4 + SPEC-001-R5 + SPEC-001-R6 + SPEC-001-R7",
+  "spec_hashes": {
+    "SPEC-001-R1-authored.md": "e79adc518e693c328bfddc6b1697c74edf0bffec5750c4a89d0ceef159455992",
+    "SPEC-001-R2-authored.md": "ced2b02701093a7182b58707fa9a74e669efb2cd9344476e2657a9436444186a",
+    "SPEC-001-R3-authored.md": "b785640127999dbcba7b848b6537f2b7fe6e26815d5b6d73bef205b9a946eeef",
+    "SPEC-001-R4-authored.md": "197da8803043e7533b71eb6aae15def7fe18e65ecac718fe7858c33c869d6923",
+    "SPEC-001-R5-authored.md": "d69f2b587c3731eafea89573d0edc5ef6070951c80ac19d70ed04186bed12856",
+    "SPEC-001-R6-authored.md": "dcdc09ad92c2cef0ac63fc6f6daa2e31734319d715b3bf70520bdc3eed3e58ba",
+    "SPEC-001-R7-authored.md": "ff2bc8806ed5e6173ec40ed6fba4f2bd5cb6f29391ab41df9be17a4531f2459b",
+    "SPEC-001-authored.txt": "1d32aa6842ae82d941f2cdcb1328c98c6f0d684b301c3e97f1befad4b506610f"
+  },
+  "status": "ELIGIBLE",
+  "t_test": 26,
+  "t_train": 104,
+  "torch_seed": 1484812508
+}

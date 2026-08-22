@@ -1,0 +1,129 @@
+completed seed=1001 arm=A1 rate=0.04010 lambda=0.01
+completed seed=1001 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1002 arm=A1 rate=0.03995 lambda=0.01
+completed seed=1002 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1003 arm=A1 rate=0.03995 lambda=0.01
+completed seed=1003 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1004 arm=A1 rate=0.04014 lambda=0.01
+completed seed=1004 arm=A2 rate=0.03995 lambda=0.01
+completed seed=1005 arm=A1 rate=0.03990 lambda=0.01
+completed seed=1005 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1006 arm=A1 rate=0.04010 lambda=0.01
+completed seed=1006 arm=A2 rate=0.03995 lambda=0.01
+completed seed=1007 arm=A1 rate=0.04010 lambda=0.01
+completed seed=1007 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1008 arm=A1 rate=0.03995 lambda=0.01
+completed seed=1008 arm=A2 rate=0.03995 lambda=0.01
+completed seed=1009 arm=A1 rate=0.03995 lambda=0.01
+completed seed=1009 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1010 arm=A1 rate=0.03995 lambda=0.01
+completed seed=1010 arm=A2 rate=0.03995 lambda=0.01
+completed seed=1011 arm=A1 rate=0.04010 lambda=0.01
+completed seed=1011 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1012 arm=A1 rate=0.03986 lambda=0.01
+completed seed=1012 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1013 arm=A1 rate=0.04005 lambda=0.01
+completed seed=1013 arm=A2 rate=0.03995 lambda=0.01
+completed seed=1014 arm=A1 rate=0.04000 lambda=0.01
+completed seed=1014 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1015 arm=A1 rate=0.04000 lambda=0.01
+completed seed=1015 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1016 arm=A1 rate=0.04000 lambda=0.01
+completed seed=1016 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1017 arm=A1 rate=0.03995 lambda=0.01
+completed seed=1017 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1018 arm=A1 rate=0.03995 lambda=0.01
+completed seed=1018 arm=A2 rate=0.03995 lambda=0.01
+completed seed=1019 arm=A1 rate=0.04005 lambda=0.01
+completed seed=1019 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1020 arm=A1 rate=0.03995 lambda=0.01
+completed seed=1020 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1021 arm=A1 rate=0.04010 lambda=0.01
+completed seed=1021 arm=A2 rate=0.04000 lambda=0.01
+completed seed=1022 arm=A1 rate=0.04000 lambda=0.01
+completed seed=1022 arm=A2 rate=0.03995 lambda=0.01
+completed seed=1023 arm=A1 rate=0.04000 lambda=0.01
+completed seed=1023 arm=A2 rate=0.03995 lambda=0.01
+completed seed=1024 arm=A1 rate=0.03990 lambda=0.01
+completed seed=1024 arm=A2 rate=0.04000 lambda=0.01
+{
+  "overall": "INCONCLUSIVE_STABILITY_GATE",
+  "arms": {
+    "A1": {
+      "eligible_seeds": [
+        1000,
+        1001,
+        1002,
+        1003,
+        1004,
+        1005,
+        1006,
+        1007,
+        1008,
+        1009,
+        1010,
+        1011,
+        1012,
+        1013,
+        1014,
+        1015,
+        1016,
+        1017,
+        1018,
+        1019,
+        1020,
+        1021,
+        1022,
+        1023,
+        1024
+      ],
+      "rate_excluded_seeds": [],
+      "n_eligible": 25,
+      "pass_seed_fraction": 0.0,
+      "pass_criterion_met_before_stability": false,
+      "kill_b3_seed_fraction": 0.96,
+      "kill_b3_criterion_met": true,
+      "cfhm_stability_gate_all_seeds": false,
+      "b3_stability_gate_all_seeds": false,
+      "decision_grade": false
+    },
+    "A2": {
+      "eligible_seeds": [
+        1000,
+        1001,
+        1002,
+        1003,
+        1004,
+        1005,
+        1006,
+        1007,
+        1008,
+        1009,
+        1010,
+        1011,
+        1012,
+        1013,
+        1014,
+        1015,
+        1016,
+        1017,
+        1018,
+        1019,
+        1020,
+        1021,
+        1022,
+        1023,
+        1024
+      ],
+      "rate_excluded_seeds": [],
+      "n_eligible": 25,
+      "pass_seed_fraction": 0.0,
+      "pass_criterion_met_before_stability": false,
+      "kill_b3_seed_fraction": 1.0,
+      "kill_b3_criterion_met": true,
+      "cfhm_stability_gate_all_seeds": false,
+      "b3_stability_gate_all_seeds": false,
+      "decision_grade": false
+    }
+  }
+}
