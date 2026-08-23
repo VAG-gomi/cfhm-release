@@ -229,3 +229,18 @@ This ledger records packaging and execution deviations for SPEC-C1 v1.1. The fir
 **Scientific impact:** None. Representative package-versus-historical fits differed only at floating-point operation-order scale (maximum forecast-mass delta `3.552713678800501e-15`).
 
 **Status:** Documented; no code change authorized or required pending any future author scope ruling.
+
+
+## DEVIATION-079 — Evidence-view root-manifest refresh initially included `.git` metadata
+
+**Stage:** Production-readiness correction pass, evidence-view post-commit verification.
+
+**Observed issue:** The first local refresh command for the two evidence-view root manifests omitted the `.git/` exclusion. The resulting manifests verified before the local commits but failed afterward because four mutable Git metadata paths (`.git/index`, `.git/logs/HEAD`, `.git/logs/refs/heads/main`, and `.git/refs/heads/main`) had been hashed. This was a local manifest-generation bookkeeping error; no remote mutation occurred and no scientific or historical evidence payload was changed.
+
+**Resolution:** Regenerate both evidence-view root manifests from worktree files while excluding `.git/`, the active root manifest, and transient `.tmp` files. Re-run all nested, package, input, and root manifest checks after the corrected commits.
+
+**Classification:** Verification-tooling/manifest bookkeeping correction under G1; not a scientific redesign.
+
+**Scientific impact:** None.
+
+**Status:** Resolved by corrected evidence-view root-manifest generation; final verification pending.
