@@ -159,3 +159,73 @@ This ledger records packaging and execution deviations for SPEC-C1 v1.1. The fir
 **Scientific impact:** None observed.
 
 **Status:** Resolved by shell cleanup and corrected verification.
+
+## DEVIATION-074 — Preserved F1-v2 nested manifest was internally invalid
+
+**Stage:** Read-only deep code and provenance review of the live canonical repository.
+
+**Observed issue:** `research/f1_v2/metrics/artifact_manifest.sha256` contained 561 entries but, when evaluated from its declared `research/f1_v2/` scope, 338 entries were missing and 212 had checksum mismatches. The file combined an unprefixed path family with a second `f1_v2/`-prefixed path family. The preserved F1-v2 payload files themselves were not changed by this review.
+
+**Resolution:** The exact pre-correction manifest bytes are preserved in the new provenance record `research/provenance/f1_v2-metrics-artifact_manifest.invalid-original.sha256`. The active nested manifest is regenerated from the actual dereferenced `research/f1_v2/` tree, excluding only `HANDOFF_REPORT.md` under the historical S11 statement and the manifest being written. The regenerated file is checked from `research/f1_v2/` and all listed files must verify.
+
+**Classification:** Provenance/manifest bookkeeping correction under G1; not a scientific redesign.
+
+**Scientific impact:** None. No model source, configuration, seed, log, raw table, prediction, or historical result file is changed.
+
+**Status:** Resolved by the production-readiness correction pass; active manifest verification passed on the correction branch.
+
+## DEVIATION-075 — Preserved autopsy manifest contained a stale temporary-file entry
+
+**Stage:** Read-only deep code and provenance review of the live canonical repository.
+
+**Observed issue:** `research/f1_v2_autopsy/AUTOPSY_MANIFEST.sha256` contained the entry `AUTOPSY_MANIFEST.sha256.tmp` with the SHA-256 of an empty file, but no such file existed. The remaining 16 autopsy payload entries verified successfully from the autopsy root.
+
+**Resolution:** The exact pre-correction manifest bytes are preserved in `research/provenance/f1_v2_autopsy-AUTOPSY_MANIFEST.invalid-original.sha256`. The active autopsy manifest is regenerated from the actual autopsy tree, excluding only the manifest being written and transient `.tmp` files. The regenerated file is checked from `research/f1_v2_autopsy/` and all listed files must verify.
+
+**Classification:** Provenance/manifest bookkeeping correction under G1; not a scientific redesign.
+
+**Scientific impact:** None. The autopsy source, raw rows, summary, configs, and recorded results remain byte-unchanged.
+
+**Status:** Resolved by the production-readiness correction pass; active manifest verification passed on the correction branch.
+
+## DEVIATION-076 — Packaged AUROC is not historical-scorer equivalent on ties
+
+**Stage:** Read-only deep code review; no metric implementation was changed.
+
+**Observed issue:** The package metric implementation assigns ordinal ranks for tied scores and does not match the historical scorer’s average-tie-rank AUROC semantics. On the preserved 400 seed-arm-method groups, Precision@25 and Precision@10 matched, but AUROC differed in 218 groups; 99 differences exceeded `1e-12`, with maximum absolute difference `0.0047979797979798011`.
+
+**Resolution:** No code or evidence was changed. This entry requests an author ruling on whether package metrics must be historically compatible or are intentionally a separate diagnostic API. The package remains unchanged pending that ruling.
+
+**Classification:** Reproducibility/protocol ambiguity; no scientific redesign made.
+
+**Scientific impact:** No change to D1–D4 or the historical runner, which continues to use the preserved historical scorer.
+
+**Status:** Awaiting author ruling.
+
+## DEVIATION-077 — Undocumented additional public model method
+
+**Stage:** Read-only public-API review; no model implementation was changed.
+
+**Observed issue:** `CFHMModel.interventional_hazard_mass()` is callable but is not listed in SPEC-C1 §C or `docs/API.md`, while SPEC-C1 defines the public API as closed-world (“nothing else public”).
+
+**Resolution:** No method was removed or modified. This entry requests an author ruling on whether the diagnostic method is authorized, should be documented as part of the API, or should be removed under the closed-world rule.
+
+**Classification:** Public-surface/provenance ambiguity; not a scientific redesign.
+
+**Scientific impact:** None observed; the method is not used by D1–D4.
+
+**Status:** Awaiting author ruling.
+
+## DEVIATION-078 — Package fit scope differs from complete historical execution scope
+
+**Stage:** Read-only package-versus-runner review; no source implementation was changed.
+
+**Observed issue:** `CFHMModel.fit` performs the SPEC-C1 full 103-target-row bound fit but does not expose the historical runner’s lambda-selection split, validation reporting, baseline execution, or bootstrap stability procedure.
+
+**Resolution:** The historical runner remains preserved under `research/source/run_experiment.py`; the package remains a compact D4-oriented research-artifact API. This scope distinction is recorded so the package is not represented as a bit-identical replacement for the full historical experiment.
+
+**Classification:** Documentation/scope clarification under G1; not a scientific redesign.
+
+**Scientific impact:** None. Representative package-versus-historical fits differed only at floating-point operation-order scale (maximum forecast-mass delta `3.552713678800501e-15`).
+
+**Status:** Documented; no code change authorized or required pending any future author scope ruling.

@@ -45,3 +45,18 @@ The SPEC-002 runner itself deletes and recreates generated output directories at
 **Stage:** SPEC-002 full-run launch.
 
 The corrected shell launch created `f1_v2_autopsy/logs/` before redirecting output, but the runner’s required idempotent reset then removed that directory at invocation start. The Python run itself completed successfully, producing T1/T2 and the completion status; the shell wrapper subsequently failed only when attempting to `tail` the deleted log file. No fit failed, no input read failed, and no prior tree was modified. The generated evidence is preserved in the new autopsy root; no executor log is required by T1–T4.
+
+
+## DEVIATION-074 — Autopsy manifest contained a stale temporary-file entry
+
+**Stage:** Read-only deep code and provenance review of the live CFHM canonical repository.
+
+**Observed issue:** `AUTOPSY_MANIFEST.sha256` listed `AUTOPSY_MANIFEST.sha256.tmp` with the SHA-256 of an empty file, but no such temporary file existed. The remaining 16 listed autopsy payload files verified successfully from the autopsy root.
+
+**Resolution:** The exact pre-correction manifest bytes are preserved in the canonical repository’s `research/provenance/f1_v2_autopsy-AUTOPSY_MANIFEST.invalid-original.sha256`. The active manifest is regenerated from the actual autopsy tree, excluding only the manifest being written and transient `.tmp` files. No autopsy source, raw table, summary, configuration, or recorded result is changed.
+
+**Classification:** Provenance/manifest bookkeeping correction under G1; not a scientific redesign.
+
+**Scientific impact:** None.
+
+**Status:** Resolved by the production-readiness correction pass; active manifest verification passed on the correction branch.

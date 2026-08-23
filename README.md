@@ -94,7 +94,7 @@ The canonical repository also preserves the actual historical execution under [`
 - [`research/f1_v2_autopsy/`](research/f1_v2_autopsy/) — complete SPEC-002 autopsy tree.
 - [`research/spec/`](research/spec/) — preserved authored specification chain.
 
-The package-level `ARTIFACT_MANIFEST.sha256` verifies the 30-file `cfhm` package at the repository root. The research trees retain their own original manifests and are not rewritten by the package manifest.
+The package-level `ARTIFACT_MANIFEST.sha256` verifies the 30-file `cfhm` package at the repository root. The research trees retain separately scoped manifests; any manifest or provenance correction is recorded in `DEVIATIONS.md`, while historical model source, raw evidence, configurations, logs, and results remain byte-unchanged.
 
 ## Provenance boundary
 
