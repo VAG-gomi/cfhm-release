@@ -2,6 +2,8 @@
 
 > **RESEARCH ARTIFACT: documents a negative result. The contagion transmission channel does not train in the shipped regime — it remains at initialization. See docs/AUTOPSY.md. Not a working hazard predictor.**
 
+Real-world validation (SPEC-RW1/RW3): attempted on a real citation network (8,507 nodes, 8,213 edges, retraction events). Result: transmission channel remained at initialization, CONFIRMING the negative result on real-world data. See research/real-world-validation/ for full evidence.
+
 CFHM is a research artifact for studying transmission ranking in dependency networks. Its purpose is to predict which node suffers the next adverse event and to rank single-node removals by predicted total-hazard reduction using observational event logs and a declared dependency graph.
 
 ## What this package is

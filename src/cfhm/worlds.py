@@ -179,8 +179,9 @@ def prepare_maintainer_mask(true_graph: EdgeTable, rng_maintainer: np.random.Gen
 def truth_accumulators(events: np.ndarray, total_weeks: int) -> tuple[np.ndarray, np.ndarray]:
     # State index k contains the state after event week k (zero-based event
     # index k-1); predictions for week k+1 use state index k.
-    e = np.zeros((N, total_weeks + 1, 3), dtype=float)
-    r = np.zeros((N, total_weeks + 1), dtype=float)
+    n_nodes = int(np.asarray(events).shape[0])
+    e = np.zeros((n_nodes, total_weeks + 1, 3), dtype=float)
+    r = np.zeros((n_nodes, total_weeks + 1), dtype=float)
     for k in range(1, total_weeks + 1):
         e[:, k, :] = TAPS[None, :] * e[:, k - 1, :] + events[:, k - 1, None]
         r[:, k] = 0.7 * r[:, k - 1] + events[:, k - 1]
@@ -188,7 +189,8 @@ def truth_accumulators(events: np.ndarray, total_weeks: int) -> tuple[np.ndarray
 
 
 def powerlaw_states(events: np.ndarray, total_weeks: int) -> np.ndarray:
-    state = np.zeros((N, total_weeks + 1), dtype=float)
+    n_nodes = int(np.asarray(events).shape[0])
+    state = np.zeros((n_nodes, total_weeks + 1), dtype=float)
     weights = np.asarray([(1.0 + s) ** -1.5 for s in range(1, 53)], dtype=float)
     for k in range(1, total_weeks + 1):
         max_s = min(52, k)

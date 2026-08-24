@@ -1,0 +1,15 @@
+{
+  "sampling_seed": 7000,
+  "valid_original_doi_rows": 69174,
+  "sample_size": 500,
+  "sample_with_repeated_original_doi": 29,
+  "query_count_target": 500,
+  "response_file_count": 500,
+  "node_count_from_edges": 8507,
+  "sampled_retracted_nodes": 500,
+  "edge_count_unique": 8213,
+  "calls_log": "cfhm_network/opencitations_calls.jsonl",
+  "sample_file": "cfhm_network/sample_500.csv",
+  "edges_file": "cfhm_network/edges.csv",
+  "note": "No model fit performed in this script; CFHM package contract is checked separately."
+}

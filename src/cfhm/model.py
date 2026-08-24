@@ -13,7 +13,7 @@ from typing import Any
 import numpy as np
 import torch
 
-from .worlds import N, T_TRAIN, T_TEST, TAPS, WorldDict
+from .worlds import T_TRAIN, T_TEST, TAPS, WorldDict
 
 
 @dataclass(frozen=True)
@@ -30,21 +30,37 @@ class FitReport:
 class CFHMModel(torch.nn.Module):
     """Typed-edge CFHM model with a structurally bounded transmission channel."""
 
-    def __init__(self, n_nodes: int = 200, seed: int | None = None) -> None:
-        if int(n_nodes) != N:
-            raise ValueError(f"n_nodes must be {N}")
+    def __init__(
+        self,
+        n_nodes: int = 200,
+        seed: int | None = None,
+        total_weeks: int = T_TRAIN + T_TEST,
+        train_weeks: int = T_TRAIN,
+        test_weeks: int = T_TEST,
+    ) -> None:
+        if int(n_nodes) <= 0:
+            raise ValueError("n_nodes must be positive")
+        if int(total_weeks) <= 0 or int(train_weeks) <= 0 or int(test_weeks) <= 0:
+            raise ValueError("week counts must be positive")
+        if int(train_weeks) + int(test_weeks) != int(total_weeks):
+            raise ValueError("train_weeks + test_weeks must equal total_weeks")
         super().__init__()
         if seed is not None:
             torch.manual_seed(int(seed))
         self.n_nodes = int(n_nodes)
+        self.total_weeks = int(total_weeks)
+        self.train_weeks = int(train_weeks)
+        self.test_weeks = int(test_weeks)
+        # G2.1(b): keep the certified MLP shape, with the input projection
+        # replaced at fit time only when the observed feature width differs.
         self.mlp = torch.nn.Sequential(
             torch.nn.Linear(9, 16),
             torch.nn.Tanh(),
             torch.nn.Linear(16, 1),
         )
         self.raw_b = torch.nn.Parameter(torch.full((3, 3), -4.0, dtype=torch.float64))
-        self.raw_c = torch.nn.Parameter(torch.full((N,), -4.0, dtype=torch.float64))
-        self.register_buffer("x", torch.zeros((N, 9), dtype=torch.float64))
+        self.raw_c = torch.nn.Parameter(torch.full((self.n_nodes,), -4.0, dtype=torch.float64))
+        self.register_buffer("x", torch.zeros((self.n_nodes, 9), dtype=torch.float64))
         self.register_buffer("edge_src", torch.empty((0,), dtype=torch.long))
         self.register_buffer("edge_dst", torch.empty((0,), dtype=torch.long))
         self.register_buffer("edge_typ", torch.empty((0,), dtype=torch.long))
@@ -81,7 +97,7 @@ class CFHMModel(torch.nn.Module):
     ) -> torch.Tensor:
         """Compute [time, node] logits; transmission is omitted for the do-mask branch."""
         a = self.mlp(self.x).squeeze(-1)
-        msg = torch.zeros((e_states.shape[1], N), dtype=torch.float64, device=e_states.device)
+        msg = torch.zeros((e_states.shape[1], self.n_nodes), dtype=torch.float64, device=e_states.device)
         if include_transmission and self.edge_src.numel():
             b = self.parameters_b()
             e_by_edge = e_states[self.edge_src]
@@ -110,19 +126,25 @@ class CFHMModel(torch.nn.Module):
             raise ValueError("world is missing required CFHM fields")
         events = np.asarray(world["events"], dtype=np.int8)
         features = np.asarray(world["features_std"], dtype=float)
-        if events.shape != (N, T_TRAIN + T_TEST):
-            raise ValueError(f"events must have shape {(N, T_TRAIN + T_TEST)}")
-        if features.shape != (N, 9):
-            raise ValueError("features_std must have shape (200, 9)")
+        if events.shape != (self.n_nodes, self.total_weeks):
+            raise ValueError(f"events must have shape {(self.n_nodes, self.total_weeks)}")
+        if features.ndim != 2 or features.shape[0] != self.n_nodes or features.shape[1] <= 0:
+            raise ValueError(f"features_std must have shape ({self.n_nodes}, feature_width)")
         graph = world["visible_graph"]
+        if self.mlp[0].in_features != int(features.shape[1]):
+            self.mlp = torch.nn.Sequential(
+                torch.nn.Linear(int(features.shape[1]), 16),
+                torch.nn.Tanh(),
+                torch.nn.Linear(16, 1),
+            ).double()
         self.x = torch.as_tensor(features, dtype=torch.float64)
         self.edge_src = torch.as_tensor(np.asarray(graph["src"], dtype=np.int64), dtype=torch.long)
         self.edge_dst = torch.as_tensor(np.asarray(graph["dst"], dtype=np.int64), dtype=torch.long)
         self.edge_typ = torch.as_tensor(np.asarray(graph["typ"], dtype=np.int64), dtype=torch.long)
-        e, r = _model_states(events[:, :T_TRAIN], T_TRAIN)
-        state_e = torch.as_tensor(e[:, 1:T_TRAIN, :], dtype=torch.float64)
-        state_r = torch.as_tensor(r[:, 1:T_TRAIN], dtype=torch.float64)
-        targets = torch.as_tensor(events[:, 1:T_TRAIN], dtype=torch.float64)
+        e, r = _model_states(events[:, :self.train_weeks], self.train_weeks)
+        state_e = torch.as_tensor(e[:, 1:self.train_weeks, :], dtype=torch.float64)
+        state_r = torch.as_tensor(r[:, 1:self.train_weeks], dtype=torch.float64)
+        targets = torch.as_tensor(events[:, 1:self.train_weeks], dtype=torch.float64)
         optimizer = torch.optim.Adam(self.parameters(), lr=1e-3)
         start = time.perf_counter()
         for _ in range(int(epochs)):
@@ -130,13 +152,13 @@ class CFHMModel(torch.nn.Module):
             loss = self._forward_loss(state_e, state_r, targets, float(lambda1))
             loss.backward()
             optimizer.step()
-        self._current_e = e[:, T_TRAIN].copy()
-        self._current_r = r[:, T_TRAIN].copy()
+        self._current_e = e[:, self.train_weeks].copy()
+        self._current_r = r[:, self.train_weeks].copy()
         self._fitted = True
         self._fit_report = FitReport(
             epochs=int(epochs),
             lambda1=float(lambda1),
-            environment_count=N,
+            environment_count=self.n_nodes,
             target_steps=int(targets.shape[1]),
             duration_seconds=float(time.perf_counter() - start),
         )
@@ -151,7 +173,7 @@ class CFHMModel(torch.nn.Module):
         hazards: list[np.ndarray] = []
         self.eval()
         with torch.no_grad():
-            for _ in range(T_TEST):
+            for _ in range(self.test_weeks):
                 state_e = torch.as_tensor(current_e[:, None, :], dtype=torch.float64)
                 state_r = torch.as_tensor(current_r[:, None], dtype=torch.float64)
                 logits = self._logits_from_states(state_e, state_r, include_transmission=True)[0, :].cpu().numpy()
@@ -169,7 +191,7 @@ class CFHMModel(torch.nn.Module):
         hazards: list[np.ndarray] = []
         self.eval()
         with torch.no_grad():
-            for _ in range(T_TEST):
+            for _ in range(self.test_weeks):
                 state_e = torch.as_tensor(current_e[:, None, :], dtype=torch.float64)
                 state_r = torch.as_tensor(current_r[:, None], dtype=torch.float64)
                 logits = self._logits_from_states(state_e, state_r, include_transmission=False)[0, :].cpu().numpy()
@@ -195,8 +217,9 @@ def _sigmoid(x: np.ndarray | float) -> np.ndarray | float:
 
 
 def _model_states(events: np.ndarray, weeks: int) -> tuple[np.ndarray, np.ndarray]:
-    e = np.zeros((N, weeks + 1, 3), dtype=float)
-    r = np.zeros((N, weeks + 1), dtype=float)
+    n_nodes = int(np.asarray(events).shape[0])
+    e = np.zeros((n_nodes, weeks + 1, 3), dtype=float)
+    r = np.zeros((n_nodes, weeks + 1), dtype=float)
     for k in range(1, weeks + 1):
         e[:, k, :] = TAPS[None, :] * e[:, k - 1, :] + events[:, k - 1, None]
         r[:, k] = 0.7 * r[:, k - 1] + events[:, k - 1]

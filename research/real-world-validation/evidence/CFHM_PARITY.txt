@@ -1,0 +1,67 @@
+{"seed": 1000, "arm": "A1", "status": "ELIGIBLE", "gamma_final": -4.02490234375, "train_rate": 0.04004807692307692, "fit_epochs": 50, "amplitudes": {"major": 0.016286008171011557, "minor": 0.016285802691637867, "advisory": 0.016285407525629885}, "spectral_radius_computed": 0.016286008171011557, "reference_provenance": "SPEC-RW2 v1.0 \u00a7G2.3; certified arm-A1 reference in the supplied SPEC-RW2 gate text"}
+{"seed": 1000, "arm": "A2", "status": "ELIGIBLE", "gamma_final": -3.712158203125, "train_rate": 0.04, "fit_epochs": 50, "amplitudes": {"major": 0.016286579456825427, "minor": 0.01628656954388021, "advisory": 0.016286499458644653}, "spectral_radius_computed": 0.016286579456825427, "reference_provenance": "SPEC-RW2-R1 R1-001; SPEC-002 T1 table, world 1000, arm A2, V-REFIT, referenced path cfhm_v2/research/f1_v2_autopsy/AUTOPSY_ROWS.csv"}
+{
+  "expected": {
+    "A1": {
+      "amplitudes": {
+        "major": 0.016286008171011557,
+        "minor": 0.016285802691637867,
+        "advisory": 0.016285407525629885
+      },
+      "provenance": "SPEC-RW2 v1.0 \u00a7G2.3; certified arm-A1 reference in the supplied SPEC-RW2 gate text"
+    },
+    "A2": {
+      "amplitudes": {
+        "major": 0.016286579456825427,
+        "minor": 0.01628656954388021,
+        "advisory": 0.016286499458644653
+      },
+      "provenance": "SPEC-RW2-R1 R1-001; SPEC-002 T1 table, world 1000, arm A2, V-REFIT, referenced path cfhm_v2/research/f1_v2_autopsy/AUTOPSY_ROWS.csv"
+    }
+  },
+  "expected_a2_gamma": -3.712158203125,
+  "observed": [
+    {
+      "seed": 1000,
+      "arm": "A1",
+      "status": "ELIGIBLE",
+      "gamma_final": -4.02490234375,
+      "train_rate": 0.04004807692307692,
+      "fit_epochs": 50,
+      "amplitudes": {
+        "major": 0.016286008171011557,
+        "minor": 0.016285802691637867,
+        "advisory": 0.016285407525629885
+      },
+      "spectral_radius_computed": 0.016286008171011557,
+      "reference_provenance": "SPEC-RW2 v1.0 \u00a7G2.3; certified arm-A1 reference in the supplied SPEC-RW2 gate text"
+    },
+    {
+      "seed": 1000,
+      "arm": "A2",
+      "status": "ELIGIBLE",
+      "gamma_final": -3.712158203125,
+      "train_rate": 0.04,
+      "fit_epochs": 50,
+      "amplitudes": {
+        "major": 0.016286579456825427,
+        "minor": 0.01628656954388021,
+        "advisory": 0.016286499458644653
+      },
+      "spectral_radius_computed": 0.016286579456825427,
+      "reference_provenance": "SPEC-RW2-R1 R1-001; SPEC-002 T1 table, world 1000, arm A2, V-REFIT, referenced path cfhm_v2/research/f1_v2_autopsy/AUTOPSY_ROWS.csv"
+    }
+  ],
+  "checks": {
+    "A1_major": true,
+    "A1_minor": true,
+    "A1_advisory": true,
+    "A1_spectral_radius": true,
+    "A2_major": true,
+    "A2_minor": true,
+    "A2_advisory": true,
+    "A2_spectral_radius": true,
+    "A2_gamma": true
+  },
+  "pass": true
+}

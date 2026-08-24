@@ -1,0 +1,41 @@
+{
+  "observed": [
+    {
+      "seed": 1000,
+      "arm": "A1",
+      "gamma_final": -4.02490234375,
+      "train_rate": 0.04004807692307692,
+      "amplitudes": {
+        "major": 0.016286008171011557,
+        "minor": 0.016285802691637867,
+        "advisory": 0.016285407525629885
+      },
+      "spectral_radius": 0.016286008171011557
+    },
+    {
+      "seed": 1000,
+      "arm": "A2",
+      "gamma_final": -3.712158203125,
+      "train_rate": 0.04,
+      "amplitudes": {
+        "major": 0.016286579456825427,
+        "minor": 0.01628656954388021,
+        "advisory": 0.016286499458644653
+      },
+      "spectral_radius": 0.016286579456825427
+    }
+  ],
+  "checks": {
+    "A1_major": true,
+    "A1_minor": true,
+    "A1_advisory": true,
+    "A1_spectral_radius": true,
+    "A2_major": true,
+    "A2_minor": true,
+    "A2_advisory": true,
+    "A2_spectral_radius": true,
+    "A1_gamma": true,
+    "A2_gamma": true
+  },
+  "pass": true
+}
