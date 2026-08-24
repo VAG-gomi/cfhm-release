@@ -1,0 +1,16 @@
+row_id,metric,value,status,notes
+1,m_ihdp_pehe_pooled,UNAVAILABLE,BLOCKED,MAF fit contract requires >=20 training environments; IHDP train set is 7 environments.
+2,m_ihdp_pehe_perenv,UNAVAILABLE,BLOCKED,No per-environment baseline was run because the bound M section could not be evaluated as specified.
+3,m_ihdp_pehe_maf,UNAVAILABLE,BLOCKED,No MAF fit.
+4,m_ihdp_maf_vs_pooled_pct,UNAVAILABLE,BLOCKED,No MAF or pooled IHDP comparison.
+5,m_lalonde_rct_ate,1794.34240427027,PASS,NSW treated mean RE78 6349.14353027027 minus control mean RE78 4554.801126.
+6,m_lalonde_pooled_est,UNAVAILABLE,BLOCKED,No model fit; bound LaLonde environment set has 2 environments.
+7,m_lalonde_maf_est,UNAVAILABLE,BLOCKED,No MAF fit.
+8,c_nodes_total,8507,PASS,500 sampled retracted nodes plus all fetched citing nodes.
+9,c_edges_total,8213,PASS,Unique citing-to-cited edges from 500 raw OpenCitations responses.
+10,c_prec50_fragonly,UNAVAILABLE,BLOCKED,CFHM package requires n_nodes=200; network has 8507 nodes.
+11,c_prec50_cfhm,UNAVAILABLE,BLOCKED,CFHM package requires n_nodes=200; network has 8507 nodes.
+12,c_transmission_coefficient,UNAVAILABLE,BLOCKED,No CFHM fit.
+13a,l_airq_winfrac,UNAVAILABLE,INCOMPLETE,One smoke paired run only: V-LHE did not beat B-PASS (0/1); not a 20-run verdict.
+13b,l_appl_winfrac,UNAVAILABLE,BLOCKED,Certified acquisition fallback failed before paired run.
+14,overall_label,NOT EVALUATED,BLOCKED,Pre-registered overall label cannot be computed because MAF/CFHM are incompatible with the bound real-data cardinalities and LHE is incomplete.
