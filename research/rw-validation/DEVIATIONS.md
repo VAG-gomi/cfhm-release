@@ -80,3 +80,9 @@ The condition was diagnosed and corrected without reset, cleanup, or repository 
 ## Resolution status
 
 DEVIATION-073 is **CLOSED as corrected**. DEVIATIONS-069 through 072 remain **OPEN / REPORT-ONLY** pending author ruling or a separate binding amendment. No repository, source package, tag, release, visibility setting, or preserved raw file was modified.
+
+## DEVIATION-070-BANKING — CFHM parity artifact banked under sandbox filename CFHM_R1_PARITY.txt; the banking authorization named CFHM_PARITY.txt.
+
+Content is the ratified SPEC-RW2-R1-corrected version (pass=true, corrected A2 references, provenance cited). Author ruled content correct; filename corrected by this rename.
+
+**Status:** CLOSED.
